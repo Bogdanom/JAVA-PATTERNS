@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public final class CSVReader extends ExternalFileReader {
+public final class CSVReader { 
+
+	private final String FILE_NOT_FOUND_EXCEPTION = "File %s could not be found";
+	private final String FILE_NOT_READ_EXCEPTION = "File %s could not be read";
+	private final String FILE_NOT_CLOSE_EXCEPTION = "File %s could not be closed";
 
 	private final String CVS_SPLIT_BY = ";";
-
-	public CSVReader(String filename) {
-		super(filename);
-	}
-	@Override
+	
 	public List<List<String>> getAllCells(String path) {
 		List<List<String>> allCells = new ArrayList<List<String>>();
 		String row;

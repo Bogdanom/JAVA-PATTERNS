@@ -112,8 +112,7 @@ public class User implements IFirstName, ILastName, ILogin,
 									.setLogin(userData.get(UserColumns.LOGIN.getIndex()))
 									.setPassword(userData.get(UserColumns.PASSWORD.getIndex()))
 									.setEmail(userData.get(UserColumns.EMAIL.getIndex()))
-									.build();
-									
+									.build();							
 	}
 	
 	public static List<IUser> createUsers(List<List<String>> rows) {
@@ -121,15 +120,14 @@ public class User implements IFirstName, ILastName, ILogin,
 		String email = rows.get(0).get(UserColumns.EMAIL.getIndex());
 		if((email != null) && (!email.contains(EMAIL_SEPARATOR))) {
 			rows.remove(0);
-		}
-			
+		}	
 		for(List<String> row: rows) {
 			result.add(createUser(row));
 		}
 		return result;
 	}
 }
-enum UserColumns {
+enum UserColumns { //use to define position of element
 	FIRST_NAME(0),
 	LAST_NAME(1),
 	LOGIN(2),

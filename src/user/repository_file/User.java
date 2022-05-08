@@ -106,7 +106,7 @@ public class User implements IFirstName, ILastName, ILogin,
 	public static IUser createUser(List<String> row) {
 		List<String> userData = new ArrayList<>(row);
 		for(int i=userData.size();i<UserColumns.values().length;i++) {
-			userData.add(EMPTY_STRING);
+			userData.add(EMPTY_STRING);//add empty strings to fill all cells in List
 	}
 		return User.getUserInstance().setFirstName(userData.get(UserColumns.FIRST_NAME.getIndex()))
 									.setLastName(userData.get(UserColumns.LAST_NAME.getIndex()))
@@ -121,7 +121,7 @@ public class User implements IFirstName, ILastName, ILogin,
 		List<IUser> result = new ArrayList<>();
 		String email = rows.get(0).get(UserColumns.EMAIL.getIndex());
 		if((email != null) && (!email.contains(EMAIL_SEPARATOR))) {
-			rows.remove(0);
+			rows.remove(0);//remove title line in csv-file
 		}
 			
 		for(List<String> row: rows) {
@@ -130,7 +130,7 @@ public class User implements IFirstName, ILastName, ILogin,
 		return result;
 	}
 }
-enum UserColumns {
+enum UserColumns {//use to define position of element
 	FIRST_NAME(0),
 	LAST_NAME(1),
 	LOGIN(2),

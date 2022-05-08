@@ -5,7 +5,9 @@ import java.util.List;
 public final class UserRepository {
 	
 	private static UserRepository instance = null;
-
+	
+	private final static String PATH ="C:\\JAVA-CODE-2022\\JAVA-PATTERNS\\users.csv";
+	
 	private UserRepository() {
 	}
 	
@@ -33,16 +35,8 @@ public final class UserRepository {
 				.setEmail("leh8@gmail.com")// optional field could be skipped
 				.build();
 	}
-	
-	public List<IUser> db() {
-		return null;
-	}
-	
-	public List<IUser> fromCsv(String filename) {
-		return User.createUsers(new CSVReader(filename).getAllCells());
-	}
-	
+
 	public List<IUser> fromCsv() {
-		return fromCsv("users.csv");
+		return User.createUsers(new CSVReader().getAllCells(PATH));
 	}
 }

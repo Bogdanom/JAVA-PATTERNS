@@ -22,7 +22,6 @@ public final class CSVReader extends ExternalFileReader {
 		String row;
 
 		BufferedReader bufferedReader = null;
-
 		try {
 			bufferedReader = new BufferedReader(new FileReader(path));
 			while ((row = bufferedReader.readLine()) != null) {
