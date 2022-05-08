@@ -1,4 +1,4 @@
-package user.builder; //pattern Builder let you not skipping any field for some user
+package user.builder; //pattern Builder let you not skipping obligatory fields for some user
 
 interface IFirstName {
 	ILastName setFirstName(String firstName);
@@ -31,10 +31,8 @@ public class User implements IFirstName, ILastName, ILogin,
 
 
 	private User() {
-//		firstName = "";
-//		lastName = "";
-//		login = "";
-//		password = "";
+//		firstName = "";	lastName = ""; login = "";	password = "";
+// obligatory fields could be skipped in constructor
 		email = "";//pattern Builder - in constructor stays optional fields only 
 	}
 

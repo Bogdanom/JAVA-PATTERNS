@@ -31,10 +31,8 @@ public class User implements IFirstName, ILastName, ILogin,
 
 
 	private User() {
-//		firstName = "";
-//		lastName = "";
-//		login = "";
-//		password = "";
+//		firstName = "";	lastName = "";	login = "";	password = "";
+	// obligatory fields could be skipped in constructor		
 		email = "";//pattern Builder - in constructor stays optional fields only 
 	}
 

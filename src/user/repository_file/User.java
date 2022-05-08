@@ -26,7 +26,9 @@ interface IBuildUser {
 
 public class User implements IFirstName, ILastName, ILogin, 
 							 IPassword, IBuildUser, IUser {
+	
 	private final static String EMAIL_SEPARATOR ="@";
+	private final static String EMPTY_STRING =new String();
 	
 	private String firstName;
 	private String lastName;
@@ -95,14 +97,24 @@ public class User implements IFirstName, ILastName, ILogin,
 
 	@Override
 	public String toString() {
-		return "User [firstName=" + firstName + ", lastName=" + lastName + ", login=" + login + ", password=" + password
+		return "\nUser [firstName=" + firstName + ", lastName=" + lastName + ", login=" + login + ", password=" + password
 				+ ", email=" + email + "]";
 	}
 
 	// add equals, hashCode, compareTo, toString
 	
 	public static IUser createUser(List<String> row) {
-		return null;
+		List<String> userData = new ArrayList<>(row);
+		for(int i=userData.size();i<UserColumns.values().length;i++) {
+			userData.add(EMPTY_STRING);
+	}
+		return User.getUserInstance().setFirstName(userData.get(UserColumns.FIRST_NAME.getIndex()))
+									.setLastName(userData.get(UserColumns.LAST_NAME.getIndex()))
+									.setLogin(userData.get(UserColumns.LOGIN.getIndex()))
+									.setPassword(userData.get(UserColumns.PASSWORD.getIndex()))
+									.setEmail(userData.get(UserColumns.EMAIL.getIndex()))
+									.build();
+									
 	}
 	
 	public static List<IUser> createUsers(List<List<String>> rows) {

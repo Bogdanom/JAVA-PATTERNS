@@ -7,7 +7,7 @@ public class ApplUser {
 		IUser user = UserRepository.getSingletonInstance().customer();
 				
 		System.out.println("user = " + user.getFirstName());
-		System.out.println("user = " + user); //use of interface IUser not allow using setters
+		System.out.print("user = " + user); //use of interface IUser not allow using setters
 	}
 
 }

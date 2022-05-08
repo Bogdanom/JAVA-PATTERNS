@@ -1,4 +1,4 @@
-package user.repository_file;
+package user.repository_file_work_in_progress;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -14,6 +14,7 @@ public final class CSVReader extends ExternalFileReader {
 
 	public CSVReader(String filename) {
 		super(filename);
+		System.out.println("***PATH = " + getPath());
 	}
 	@Override
 	public List<List<String>> getAllCells(String path) {

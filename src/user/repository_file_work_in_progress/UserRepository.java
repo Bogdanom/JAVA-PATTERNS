@@ -1,4 +1,4 @@
-package user.repository_file;
+package user.repository_file_work_in_progress;
 
 import java.util.List;
 
@@ -45,4 +45,13 @@ public final class UserRepository {
 	public List<IUser> fromCsv() {
 		return fromCsv("users.csv");
 	}
+	/*
+	public List<IUser> fromExcel(String filename) {
+		return User.createUsers(new ExcelReader(filename).getAllCells());
+	}
+	
+	public List<IUser> fromExcel() {
+		return fromExcel("users.xls");
+	}
+	*/
 }

@@ -5,9 +5,9 @@ public class ApplUser {
 	public static void main(String[] args) {
 
 		User user = User.getUserInstance()
-				.setName("oleh")
-				.setEmail("oleh@gmail.com")
-				.setAge(47);
+				.setName("oleh1")
+				.setEmail("oleh1@gmail.com")
+				.setAge(27);
 		System.out.println("user = " + user.getName());
 		System.out.println("user = " + user);	
 	}

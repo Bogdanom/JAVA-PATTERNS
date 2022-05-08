@@ -1,4 +1,4 @@
-package user.repository_singleton;
+package user.repository_file_work_in_progress;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +26,9 @@ interface IBuildUser {
 
 public class User implements IFirstName, ILastName, ILogin, 
 							 IPassword, IBuildUser, IUser {
+	private final static String EMAIL_SEPARATOR ="@";
+	private final static String EMPTY_STRING =new String();
+	
 	private String firstName;
 	private String lastName;
 	private String login;
@@ -34,9 +37,8 @@ public class User implements IFirstName, ILastName, ILogin,
 
 
 	private User() {
-//		firstName = "";	lastName = ""; login = "";	password = "";
-// obligatory fields could be skipped in constructor
-			email = "";//pattern Builder - in constructor stays optional fields only 
+//		firstName = "";//lastName = "";//login = "";//password = "";
+		email = "";//pattern Builder - in constructor stays optional fields only 
 	}
 
 	public static IFirstName getUserInstance() {
@@ -94,10 +96,52 @@ public class User implements IFirstName, ILastName, ILogin,
 
 	@Override
 	public String toString() {
-		return "User [firstName=" + firstName + ", lastName=" + lastName + ", login=" + login + ", password=" + password
+		return "\nUser [firstName=" + firstName + ", lastName=" + lastName + ", login=" + login + ", password=" + password
 				+ ", email=" + email + "]";
 	}
 
 	// add equals, hashCode, compareTo, toString
 	
+	public static IUser createUser(List<String> row) {
+		List<String> userData = new ArrayList<>(row);
+		for(int i=userData.size();i<UserColumns.values().length;i++) {
+			userData.add(EMPTY_STRING);
+	}
+		return User.getUserInstance().setFirstName(userData.get(UserColumns.FIRST_NAME.getIndex()))
+									.setLastName(userData.get(UserColumns.LAST_NAME.getIndex()))
+									.setLogin(userData.get(UserColumns.LOGIN.getIndex()))
+									.setPassword(userData.get(UserColumns.PASSWORD.getIndex()))
+									.setEmail(userData.get(UserColumns.EMAIL.getIndex()))
+									.build();
+									
+	}
+	
+	public static List<IUser> createUsers(List<List<String>> rows) {
+		List<IUser> result = new ArrayList<>();
+		String email = rows.get(0).get(UserColumns.EMAIL.getIndex());
+		if((email != null) && (!email.contains(EMAIL_SEPARATOR))) {
+			rows.remove(0);
+		}
+			
+		for(List<String> row: rows) {
+			result.add(createUser(row));
+		}
+		return result;
+	}
+}
+enum UserColumns {
+	FIRST_NAME(0),
+	LAST_NAME(1),
+	LOGIN(2),
+	PASSWORD(3),
+	EMAIL(4);
+	
+	private int index;
+	
+	private UserColumns(int index) {
+		this.index=index;
+	}	
+	public int getIndex() {
+		return index;
+	}
 }

@@ -1,4 +1,4 @@
-package user.repository_file;
+package user.repository_file_work_in_progress;
 
 import java.util.List;
 
@@ -10,10 +10,21 @@ public abstract class ExternalFileReader {
 	protected final int PATH_PREFIX = 6;
 	protected final String PATH_SEPARATOR ="/";
 
+	private String name;
 	private String path;
 	
-	protected ExternalFileReader(String path) {
-		this.path="C:\\JAVA-CODE-2022\\JAVA-PATTERNS\\users.csv";//path to the source file
+	protected ExternalFileReader(String name) {
+		this.name=name;
+		this.path=this.getClass().getResource(PATH_SEPARATOR+name).getPath();
+	}
+	
+	protected ExternalFileReader(String name, String path) {
+		this.name=name;
+		this.path=path;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public String getPath() {
