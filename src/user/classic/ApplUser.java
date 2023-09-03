@@ -5,11 +5,11 @@ public class ApplUser {
 	public static void main(String[] args) {
 
 		User user = new User()
-				.setName("oleh")
-				.setEmail("oleh@gmail.com")
-				.setAge(47);
+				.setName("Leg")
+				.setEmail("leg@gmail.com")
+				.setAge(49);
 		System.out.println("user = " + user.getName());
-		System.out.println("user = "+user);	
+		System.out.println("user = "+ user);	
 	}
 
 }

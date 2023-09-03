@@ -28,11 +28,11 @@ public final class UserRepository {
 	
 	public IUser customer() {
 		return User.getUserInstance()
-				.setFirstName("leh8")
+				.setFirstName("leg8")
 				.setLastName("stor8")
-				.setLogin("lehstor8")
+				.setLogin("legstor8")
 				.setPassword("asd1258")
-				.setEmail("leh8@gmail.com")// optional field could be skipped
+				.setEmail("leg8@gmail.com")// optional field could be skipped
 				.build();
 	}
 
