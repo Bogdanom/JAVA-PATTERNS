@@ -2,7 +2,7 @@ package user.repository_singleton;
 
 public final class UserRepository {
 	
-	private static UserRepository instance = null;
+	private static volatile UserRepository instance = null;
 
 	private UserRepository() {
 	}

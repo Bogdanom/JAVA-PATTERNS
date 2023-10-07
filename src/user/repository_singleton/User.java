@@ -1,24 +1,24 @@
 package user.repository_singleton;
 
-import java.util.ArrayList;
-import java.util.List;
-
+interface IUser {
+	public String getFirstName();
+	public String getLastName();
+	public String getLogin();
+	public String getPassword();
+	public String getEmail() ;
+}
 interface IFirstName {
 	ILastName setFirstName(String firstName);
 }
-
 interface ILastName {
 	ILogin setLastName(String lastName);
 }
-
 interface ILogin {
 	IPassword setLogin(String login);
 }
-
 interface IPassword {
 	IBuildUser setPassword(String password);
 }
-
 interface IBuildUser {
 	IBuildUser setEmail(String email);
 	IUser build();
@@ -36,7 +36,7 @@ public class User implements IFirstName, ILastName, ILogin,
 	private User() {
 //		firstName = "";	lastName = ""; login = "";	password = "";
 // obligatory fields could be skipped in constructor
-			email = "";//pattern Builder - in constructor stays optional fields only 
+			email = "non";//pattern Builder - in constructor stays optional fields only 
 	}
 
 	public static IFirstName getUserInstance() {
